@@ -23,9 +23,9 @@ public class EmailService {
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
 
-
+            String expiryInfo = ". It expires in one minute";
             helper.setSubject(subject);
-            helper.setText(text+otp, true);
+            helper.setText(text+otp+expiryInfo, true);
             helper.setTo(userEmail);
             javaMailSender.send(mimeMessage);
         } catch (MailException e) {

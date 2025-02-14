@@ -33,5 +33,6 @@ export interface AuthState {
     role: string | null;
     loading: boolean;
     error: string | null;
+    isAuthenticated: boolean;
     otpSent:boolean
 }

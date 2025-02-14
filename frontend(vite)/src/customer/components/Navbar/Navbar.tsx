@@ -32,6 +32,7 @@ const Navbar = () => {
   const isLarge = useMediaQuery(theme.breakpoints.up("lg"));
 
  const dispatch = useAppDispatch();
+  const auth = useAppSelector((state) => state.auth);
   const user = useAppSelector((state) => state.user);
   const cart = useAppSelector((state) => state.cart);
   const sellers = useAppSelector((state) => state.sellers);
@@ -54,6 +55,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
           dispatch(performLogout())
+          auth.otpSent = false;
           navigate("/")
       }
  

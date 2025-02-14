@@ -31,6 +31,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -90,6 +91,7 @@ public class AuthServiceImpl implements AuthService {
         VerificationCode verificationCode = new VerificationCode();
         verificationCode.setOtp(otp);
         verificationCode.setEmail(email);
+        verificationCode.setExpiryDate(LocalDateTime.now().plusMinutes(1)); // Sets expiry date to 1 minute from now
         verificationCodeRepository.save(verificationCode);
 
         String subject = "Beau Login/Signup Otp";
